@@ -25,10 +25,12 @@ jobs:
           echo "DOCKER_TAG=${DOCKER_TAG}"
           echo "DOCKER_TAG=${DOCKER_TAG:-latest}"
 
-      - name: redeploy
+      - name: redeploy lab
         if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop')
         run: |
           echo "completed lab"
+      
+      - name: redeploy prod
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         run: |
           echo "completed prod"
