@@ -23,6 +23,7 @@ jobs:
           echo "DOCKER_TAG=${DOCKER_TAG}"
           DOCKER_TAG=${DOCKER_TAG#refs/heads/}
           echo "DOCKER_TAG=${DOCKER_TAG}"
+          echo "DOCKER_TAG=${DOCKER_TAG:-latest}"
 
       - name: redeploy lab
         if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop')
